@@ -1,1 +1,2 @@
-
+1.problem
+  client don't reconnect after k8s cluster restart
