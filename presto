@@ -1,0 +1,18 @@
+1.problem
+    return the result by select date '1949-05-01',but it throws an exception
+    Illegal instant due to time zone offset transition
+
+    solution
+    debug the part of code throws an Exception.PrestoResultSet's getDate() method throws Exception.
+    Below is code
+    new Date(DATE_FORMATTER.withZone(localTimeZone).parseMillis(String.valueOf(value)));
+
+    In the version 0.254. you can
+    private static final String TIME_ZONE_ID = "GMT+08:00";
+    stmt.getConnection().unwrap(PrestoConnection.class).setTimeZoneId(TIME_ZONE_ID);
+
+    In the version 0.278. you can
+    add parameter to jdbc url the timeZoneId=Etc%2FGMT-8
+
+    reference
+    https://joda-time.sourceforge.net/faq.html#illegalinstant
