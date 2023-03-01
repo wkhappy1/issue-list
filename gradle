@@ -1,13 +1,13 @@
-problem
-I have a project A that depends on the B jar package. 
-Then we need to upgrade gralde to 7.4. 
-And project B repackaged and upload to our nexus via publishing.
-project A use one of project B's dependcies.
-after upgrade gradle,project A can't compile.
+1.problem
+    I have a project A that depends on the B jar package. 
+    Then we need to upgrade gralde to 7.4. 
+    And project B repackaged and upload to our nexus via publishing.
+    project A use one of project B's dependcies.
+    after upgrade gradle,project A can't compile.
 
-solution
-After opening B's pom.xml,I found out that the dependency in B scope is runtime,so A compiled failed.
-what i need to do is change dependency scope to compile.so i changed B's dependency to api scope, then reupload.problem fixed
+    solution
+    After opening B's pom.xml,I found out that the dependency in B scope is runtime,so A compiled failed.
+    what i need to do is change dependency scope to compile.so i changed B's dependency to api scope, then reupload.problem fixed
 
-reference
-https://docs.gradle.org/current/userguide/java_library_plugin.html#sec:java_library_separation
+    reference
+    https://docs.gradle.org/current/userguide/java_library_plugin.html#sec:java_library_separation
